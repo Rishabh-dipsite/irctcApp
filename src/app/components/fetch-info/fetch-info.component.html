@@ -1,0 +1,25 @@
+<div class="m-2 p-2">
+    <form #form="ngForm" (submit)="fetchTrains(form.value)">
+        <div class="row">
+            <label for="source">Source: </label>
+            <select class="form-select" name="source" ngModel>
+                <option selected disabled value="">Select Origin</option>
+                <option *ngFor="let src of stations" [value]="src.code">{{src.name}}</option>
+            </select>
+        </div>
+        <div class="row">
+            <label for="destination">Destination: </label>
+            <select class="form-select" name="destination" ngModel>
+                <option selected disabled value="">Select Destination</option>
+                <option *ngFor="let dst of stations" [value]="dst.code">{{dst.name}}</option>
+            </select>
+        </div>
+        <div class="row">
+            <label for="date">Date: </label>
+            <input type="date" name="date" ngModel />
+        </div>
+        <div class="row mt-2">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>

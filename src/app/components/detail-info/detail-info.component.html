@@ -1,0 +1,8 @@
+<div *ngFor="let train of trains" class="card m-2 p-2">
+    <h5 class="card-header">{{train.name + ' (' + train._id + ')'}}</h5>
+    <div class="card-body">
+      <h5 class="card-title">LKO - NDLS</h5>
+      <p class="card-text">Availability : 29</p>
+      <button (click)="bookTrain(train._id)" class="btn btn-primary">Book</button>
+    </div>
+  </div>
