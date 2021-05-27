@@ -34,7 +34,6 @@ stations : [Station]
 
   bookTrain(id : number){
     let trainIndex = this.trains.findIndex(x => x._id === id)
-    this.trains[trainIndex].availibility--;
-
+    this.trains[trainIndex].availability--;    
   }
 }

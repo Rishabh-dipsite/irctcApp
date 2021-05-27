@@ -6,5 +6,5 @@ export class TrainDetails{
     runningDays : [number]
     source : string
     destination : string
-    availibility : number
+    availability : number
 }

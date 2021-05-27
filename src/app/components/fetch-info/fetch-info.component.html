@@ -2,24 +2,38 @@
     <form #form="ngForm" (submit)="fetchTrains(form.value)">
         <div class="row">
             <label for="source">Source: </label>
-            <select class="form-select" name="source" ngModel>
+            <select #src="ngModel" class="form-select" name="source" ngModel required>
                 <option selected disabled value="">Select Origin</option>
                 <option *ngFor="let src of stations" [value]="src.code">{{src.name}}</option>
             </select>
+            <small *ngIf="src.touched && src.value==''" class="text-danger">Source is
+                required.</small>
         </div>
         <div class="row">
             <label for="destination">Destination: </label>
-            <select class="form-select" name="destination" ngModel>
+            <select #dst="ngModel" class="form-select" name="destination" ngModel required>
                 <option selected disabled value="">Select Destination</option>
                 <option *ngFor="let dst of stations" [value]="dst.code">{{dst.name}}</option>
             </select>
+            <small *ngIf="dst.touched && dst.value==''" class="text-danger">Destination is
+                required.</small>
+            <small *ngIf="dst.touched && dst.value!='' && src.value!='' && dst.value == src.value"
+                class="text-danger">Source and
+                Destination
+                cannot be same.
+            </small>
         </div>
         <div class="row">
             <label for="date">Date: </label>
-            <input type="date" name="date" ngModel />
+            <input #dt="ngModel" type="date" id="date" name="date" ngModel required />
+            <small *ngIf="dt.touched && dt.value==''" class="text-danger">Date is
+                required.</small>
+            <small *ngIf="dt.touched && dt.value !='' && !validateDate(dt.value)" class="text-danger">Please select a
+                current or future date.</small>
         </div>
+
         <div class="row mt-2">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button [disabled]="!formValid(form)" type="submit" class="btn btn-primary">Submit</button>
         </div>
     </form>
 </div>
