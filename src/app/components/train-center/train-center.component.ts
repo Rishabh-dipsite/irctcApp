@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchTrainRequest } from 'src/app/model/fetchTrainsRequest';
+import { Station } from 'src/app/model/stations';
+import { TrainService } from "src/app/_services/train.service";
 
 @Component({
   selector: 'app-train-center',
@@ -25,9 +27,15 @@ export class TrainCenterComponent implements OnInit {
     }
 ]
 
-  constructor() { }
+stations : [Station]
+
+  constructor(private _trainService : TrainService) { }
 
   ngOnInit(): void {
+    this._trainService.fetchStations().subscribe(res => {
+      this.stations = res
+    }, err => console.log(err)
+    )
   }
 
   HandleSearch(req : FetchTrainRequest){

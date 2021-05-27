@@ -7,6 +7,7 @@ import { FetchInfoComponent } from './components/fetch-info/fetch-info.component
 import { DetailInfoComponent } from './components/detail-info/detail-info.component';
 import { FormsModule } from '@angular/forms';
 import { TrainCenterComponent } from './components/train-center/train-center.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TrainCenterComponent } from './components/train-center/train-center.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

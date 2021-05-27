@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FetchTrainRequest } from "src/app/model/fetchTrainsRequest";
 
 @Component({
@@ -12,32 +12,7 @@ export class FetchInfoComponent implements OnInit {
 
   constructor() { }
 
-  stations = [
-    {
-        "code": "LKO",
-        "name": "Lucknow"
-    },
-    {
-        "code": "NDLS",
-        "name": "New Delhi"
-    },
-    {
-        "code": "GZB",
-        "name": "Ghaziabad"
-    },
-    {
-        "code": "BLY",
-        "name": "Bareily"
-    },
-    {
-        "code": "MD",
-        "name": "Muradabad"
-    },
-    {
-        "code": "HP",
-        "name": "Hapur"
-    }
-]
+  @Input() stations
 
   ngOnInit(): void {
   }

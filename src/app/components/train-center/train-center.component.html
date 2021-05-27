@@ -1,5 +1,5 @@
 <div class="row">
-<app-fetch-info (search)="HandleSearch($event)" class="col col-sm-3"></app-fetch-info>
+<app-fetch-info (search)="HandleSearch($event)" [stations]="stations" class="col col-sm-3"></app-fetch-info>
 
 <app-detail-info [trains]="trains" (book)="bookTrain($event)" class="col col-sm-9"></app-detail-info>
 </div>
