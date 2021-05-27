@@ -33,8 +33,8 @@ router.get('/trains/:src/:dest/:date', (req, res) => {
                 x.destination = sch.schedule[sch.schedule.length - 1];
                 x.availability = x.totalSeats;
                 const trainAvb = availability[x._id];
-                if(trainAvb){
-                    if(trainAvb[req.params.date])
+                if (trainAvb) {
+                    if (trainAvb[req.params.date])
                         x.availability = trainAvb[req.params.date]
                 }
 
@@ -52,7 +52,16 @@ router.get('/trains', (req, res) => {
     fs.readFile(path.join(dbUrl + 'trains.json'), (err, data) => {
         if (err) throw err;
         data = JSON.parse(data);
+        console.log(schedule);
         console.log(data);
+        data.forEach(x => {
+
+            let sch = schedule.find(s => s._id == x.scheduleId)
+            console.log(sch);
+            x.source = sch.schedule[0];
+            x.destination = sch.schedule[sch.schedule.length - 1];
+        })
+
         res.json(data);
     })
 });

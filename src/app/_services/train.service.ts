@@ -21,4 +21,8 @@ export class TrainService {
     // Call some API logic
     return this._http.get<[TrainDetails]>(this.baseurl + 'trains/' + req.source + '/' + req.destination + '/' + req.date);
   }
+
+  fetchAllTrains(){
+    return this._http.get<[TrainDetails]>(this.baseurl + 'trains/');
+  }
 }

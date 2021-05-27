@@ -9,6 +9,7 @@ import { FetchTrainRequest } from "src/app/model/fetchTrainsRequest";
 export class FetchInfoComponent implements OnInit {
 
   @Output() search = new EventEmitter<FetchTrainRequest>();
+  @Output() findAll = new EventEmitter();
   @Input() stations
 
   constructor() { }
@@ -27,5 +28,9 @@ export class FetchInfoComponent implements OnInit {
 
   validateDate(date){
     return new Date(date) >= new Date()
+  }
+
+  fetchAllTrains(){
+    this.findAll.emit();
   }
 }

@@ -1,20 +1,22 @@
 <div *ngFor="let train of trains" class="card m-2 p-2">
-    <h5 class="card-header">{{train.name + ' (' + train._id + ')'}}</h5>
-    <div class="card-body">
-      <h5 class="card-title">{{train.source + ' - ' + train.destination}}</h5>
+  <h5 class="card-header">{{train.name + ' (' + train._id + ')'}}</h5>
+  <div class="card-body">
+    <h5 class="card-title">{{train.source + ' - ' + train.destination}}</h5>
+    <p class="card-text">Running Days : {{getRunninDays(train.runningDays)}}</p>
+    <div *ngIf="train.availability">
       <p class="card-text" *ngIf="train.availability > 0">Availability : {{train.availability}}</p>
-      <p class="card-text text-danger"  *ngIf="train.availability <= 0">Unavailable</p>
+      <p class="card-text text-danger" *ngIf="train.availability <= 0">Unavailable</p>
       <button ng-disabled="train.availability <= 0" (click)="bookTrain(train._id)" class="btn btn-primary">Book</button>
     </div>
   </div>
+</div>
 
-  <div *ngIf="trains && trains.length == 0" class="card m-2 p-2">
-    <h5 class="card-header text-danger">No Trains Available as per query</h5>
-    <!-- <div class="card-body">
+<div *ngIf="trains && trains.length == 0" class="card m-2 p-2">
+  <h5 class="card-header text-danger">No Trains Available as per query</h5>
+  <!-- <div class="card-body">
       <h5 class="card-title">{{train.source + ' - ' + train.destination}}</h5>
       <p class="card-text" *ngIf="train.availability > 0">Availability : {{train.availability}}</p>
       <p class="card-text text-danger"  *ngIf="train.availability <= 0">Unavailable</p>
       <button ng-disabled="train.availability <= 0" (click)="bookTrain(train._id)" class="btn btn-primary">Book</button>
     </div> -->
-  </div>
-  
+</div>

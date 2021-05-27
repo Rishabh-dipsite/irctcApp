@@ -36,4 +36,11 @@ stations : [Station]
     let trainIndex = this.trains.findIndex(x => x._id === id)
     this.trains[trainIndex].availability--;    
   }
+
+  findAll(){
+    this._trainService.fetchAllTrains().subscribe(res => {
+      this.trains = res
+    }, err => console.log(err)
+    )
+  }
 }

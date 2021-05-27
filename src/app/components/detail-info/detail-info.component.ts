@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {daysOfWeek} from "src/app/utility/WeekDays";
 
 @Component({
   selector: 'app-detail-info',
@@ -16,6 +17,10 @@ export class DetailInfoComponent implements OnInit {
 
   bookTrain(id : number){
     this.book.emit(id);
+  }
+
+  getRunninDays(runningDays : []){
+    return runningDays.map(x => daysOfWeek[x]).join();
   }
 
 }

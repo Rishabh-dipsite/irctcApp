@@ -12,5 +12,19 @@
         "totalSeats":280,
         "scheduleId":2,
         "runningDays":[2, 4]
+    },
+    {
+        "_id": 12419,
+        "name":"Gomti Express",
+        "totalSeats":450,
+        "scheduleId":3,
+        "runningDays":[0, 2, 4, 6]
+    },
+    {
+        "_id": 12429,
+        "name":"LKO NDLS AC SPL",
+        "totalSeats":180,
+        "scheduleId":4,
+        "runningDays":[1, 3]
     }
 ]
