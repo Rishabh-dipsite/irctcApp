@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchTrainRequest } from 'src/app/model/fetchTrainsRequest';
 import { Station } from 'src/app/model/stations';
+import { TrainDetails } from 'src/app/model/trainDetails';
 import { TrainService } from "src/app/_services/train.service";
 
 @Component({
@@ -10,22 +11,7 @@ import { TrainService } from "src/app/_services/train.service";
 })
 export class TrainCenterComponent implements OnInit {
 
-  trains = [
-    {
-        "_id":12230,
-        "name":"Lucknow Mail",
-        "totalSeats":320,
-        "scheduleId":1,
-        "runningDays":["M", "Th"]
-    },
-    {
-        "_id":12003,
-        "name":"Swarn Shatabdi",
-        "totalSeats":280,
-        "scheduleId":2,
-        "runningDays":["Tu", "F"]
-    }
-]
+  trains : [TrainDetails]
 
 stations : [Station]
 
@@ -39,9 +25,16 @@ stations : [Station]
   }
 
   HandleSearch(req : FetchTrainRequest){
+    this._trainService.fetchTrainsAvailable(req).subscribe(res => {
+      this.trains = res;
+      
+    }, err => console.log(err)
+    )
   }
 
   bookTrain(id : number){
-    debugger;
+    let trainIndex = this.trains.findIndex(x => x._id === id)
+    this.trains[trainIndex].availibility--;
+
   }
 }

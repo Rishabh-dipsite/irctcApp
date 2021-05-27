@@ -3,5 +3,8 @@ export class TrainDetails{
     name:string
     totalSeats : number
     scheduleId : number
-    runningDays : [string]
+    runningDays : [number]
+    source : string
+    destination : string
+    availibility : number
 }

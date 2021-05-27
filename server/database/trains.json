@@ -4,13 +4,13 @@
         "name":"Lucknow Mail",
         "totalSeats":320,
         "scheduleId":1,
-        "runningDays":["M", "Th"]
+        "runningDays":[2, 5]
     },
     {
         "_id":12003,
         "name":"Swarn Shatabdi",
         "totalSeats":280,
         "scheduleId":2,
-        "runningDays":["Tu", "F"]
+        "runningDays":[2, 4]
     }
 ]
